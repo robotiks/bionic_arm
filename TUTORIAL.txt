@@ -1,0 +1,71 @@
+USER MANUAL:
+http://magazine.odroid.com/wp-content/uploads/odroid-xu4-user-manual.pdf#page=21
+
+DOWNLOAD AND FLASH OS (UBUNTU) TO eMMC OR SD CARD:
+http://odroid.com/dokuwiki/doku.php?id=en:odroid_flashing_tools
+https://blogs.s-osg.org/install-ubuntu-run-mainline-kernel-odroid-xu4/
+
+PING AND CONNECT TO ODROID:
+http://odroid.com/dokuwiki/doku.php?id=en:headless_setup
+nmap -sn 10.129.169.0/24
+ssh odroid@10.42.0.70
+ssh-keygen -f "/home/YOURUSERNAME/.ssh/known_hosts" -R 10.42.0.70
+(replace YOURUSERNAME)
+
+UPDATE & UPGRADE:
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get dist-upgrade
+
+REPOSITORY SETUP:
+sudo add-apt-repository main
+sudo add-apt-repository universe
+sudo add-apt-repository restricted
+sudo add-apt-repository multiverse
+
+SETUP ETHERNET & WIFI ACCESS, INSTALL ROS, REMOVE SUDO PASSWORD:
+http://blog.paral.in/odroid-setup-for-robotics-with-ros/
+http://barzinm.com/robotics/2016/odriod-setup.html
+
+INSTALL IMPORTANT PROGRAMS FOR LINUX:
+sudo apt-get install python-pip python-dev build-essential 
+sudo apt-get install python-setuptools
+sudo apt-get install swig
+sudo pip install --upgrade pip 
+sudo apt-get install git
+sudo apt-get install nano
+sudo pip install pyserial
+
+REMOVE SUDO PASSWORD:
+passwd -d root
+sudo EDITOR=nano visudo
+(change %sudo... line to this)
+%sudo ALL=(ALL) NOPASSWD:ALL
+
+CLONE WiringPi:
+git clone https://github.com/WiringPi/WiringPi.git
+git clone https://github.com/hardkernel/wiringPi
+(after cloning each open the folder and run: ./build)
+OPEN AND FOLLOW:
+git clone https://github.com/WiringPi/WiringPi-Python.git
+https://github.com/hardkernel/WiringPi2-Python
+https://github.com/Gadgetoid/WiringPi2-Python.git
+https://github.com/mlinuxguy/WiringPi2-odroid-c1
+(also run sudo ./build.sh after you open the folder!!!!!!)
+
+READING GPIO STATE:
+cat /sys/kernel/debug/gpio
+
+MAKE THE SCRIPT EXECUTABLE:
+sudo nano script.sh
+chmod a+x script.sh
+sudo ./script.sh
+
+USING ODROID:
+(Connect with Ethernet cable)
+ssh odroid@10.42.0.70
+sudo ./script.sh
+sudo python control.py
+
+TURN OFF ODROID:
+sudo shutdown -h now
