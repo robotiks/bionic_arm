@@ -4,8 +4,12 @@ Files used for controlling a bionic arm. The arm consists of three fingers contr
 Follow the TUTORIAL in order to prepare Odroid XU-4 for using the program.
 
 "control.py" file needs to be copied to the Odroid XU-4 and script.sh file which initializes all the GPIO outputs for use needs to be created using: 
+```
 sudo nano script.sh 
-(or vi instead of nano)
+```
+(vi can be used instead of nano)
 
 To run the program just type the following line in Terminal: 
+```
 sudo ./script.sh
+```
